@@ -1,3 +1,5 @@
+import { EClientErrorHttpStatusCode, EServerErrorHttpStatusCode } from "../interface/response.interface";
+
 export class ProgramError extends Error {
   status: number;
 
@@ -9,14 +11,14 @@ export class ProgramError extends Error {
 }
 
 export class ServerError extends ProgramError {
-  constructor(message = "Server Error", status = 500) {
+  constructor(message = "Server Error", status = EServerErrorHttpStatusCode.INTERNAL_SERVER_ERROR) {
     super(message, status);
     this.name = "ServerError";
   }
 }
 
 export class HttpError extends ProgramError {
-  constructor(message = "Client Error", status = 400) {
+  constructor(message = "Client Error", status = EClientErrorHttpStatusCode.BAD_REQUEST) {
     super(message, status);
     this.status = status;
     this.name = "HttpError";
@@ -24,28 +26,28 @@ export class HttpError extends ProgramError {
 }
 
 export class BadRequest extends HttpError {
-  constructor(message = "Bad Request", status = 400) {
+  constructor(message = "Bad Request", status = EClientErrorHttpStatusCode.BAD_REQUEST) {
     super(message, status);
     this.name = "BadRequest";
   }
 }
 
 export class UnauthorizedException extends HttpError {
-  constructor(message = "Unauthorized Exception", status = 401) {
+  constructor(message = "Unauthorized Exception", status = EClientErrorHttpStatusCode.UNAUTHORIZED) {
     super(message, status);
     this.name = "UnauthorizedException";
   }
 }
 
 export class ResourceForbidden extends HttpError {
-  constructor(message = "Forbidden Resource", status = 403) {
+  constructor(message = "Forbidden Resource", status = EClientErrorHttpStatusCode.FORBIDDEN) {
     super(message, status);
     this.name = "ResourceForbidden";
   }
 }
 
 export class ResourceNotFound extends HttpError {
-  constructor(message = "Resource Not Found", status = 404) {
+  constructor(message = "Resource Not Found", status = EClientErrorHttpStatusCode.NOT_FOUND) {
     super(message, status);
     this.name = "ResourceNotFound";
   }

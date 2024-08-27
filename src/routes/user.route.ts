@@ -13,7 +13,7 @@ const userRouter = Router();
 
 userRouter.get("/", handleAsync(getUsers));
 
-userRouter.get("/", handleAsync(getParticularUser));
+userRouter.get("/user", handleAsync(getParticularUser));
 
 userRouter.post("/", handleAsync(createUser));
 
