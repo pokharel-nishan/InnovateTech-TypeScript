@@ -1,6 +1,15 @@
-const mongoose = require("mongoose");
+import { Schema, model, connect } from 'mongoose';
 
-const UserModel = new mongoose.Schema({
+interface IUser {
+  username: string;
+  password: string;
+  email: string;
+  firstname: string;
+  lastname: string;
+  role: string
+}
+
+const UserModel = new Schema<IUser>({
   email: {
     type: String,
     required: true,
@@ -28,4 +37,4 @@ const UserModel = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("user", UserModel);
+export default model<IUser>("user", UserModel);
