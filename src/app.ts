@@ -1,13 +1,24 @@
-import express from 'express';
+import express from "express";
+import dotenv from "dotenv";
+import router from "./routes";
+import { mongoDBConnection } from "./database/mongoose.database";
+import { ServerError } from "./exception/handlers.exception";
+
 const app = express();
-const port = 3001;
+dotenv.config();
+
+const PORT = process.env.PORT;
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send("Hello World!!")
-})
+app.use(router);
 
-app.listen(port, () => {
-  return console.log(`Express is listening at http://localhost:${port}`);
+app.listen(PORT, () => {
+  try {
+    mongoDBConnection();
+    console.log("Database Connection Established.");
+  } catch {
+    throw new ServerError("Problem Connecting to database.");
+  }
+  return console.log(`Express is listening at http://localhost:${PORT}`);
 });

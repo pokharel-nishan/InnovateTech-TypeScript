@@ -4,13 +4,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const dotenv_1 = __importDefault(require("dotenv"));
+const routes_1 = __importDefault(require("./routes"));
+const mongoose_database_1 = require("./database/mongoose.database");
+const handlers_exception_1 = require("./exception/handlers.exception");
 const app = (0, express_1.default)();
-const port = 3001;
+dotenv_1.default.config();
+const PORT = process.env.PORT;
 app.use(express_1.default.json());
-app.get('/', (req, res) => {
-    res.send("Hello World!!");
-});
-app.listen(port, () => {
-    return console.log(`Express is listening at http://localhost:${port}`);
+app.use(routes_1.default);
+app.listen(PORT, () => {
+    try {
+        (0, mongoose_database_1.mongoDBConnection)();
+        console.log("Database Connection Established.");
+    }
+    catch (_a) {
+        throw new handlers_exception_1.ServerError("Problem Connecting to database.");
+    }
+    return console.log(`Express is listening at http://localhost:${PORT}`);
 });
 //# sourceMappingURL=app.js.map
