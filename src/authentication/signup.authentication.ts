@@ -3,7 +3,6 @@ import { createUserDto } from "../dto/createUser.dto";
 import { HttpError } from "../exception/handlers.exception";
 import { encrypt } from "../utils/encryption.util";
 
-
 export async function signup(userObj: createUserDto) {
   const { password } = userObj;
   const encryptedPassword = encrypt(password);

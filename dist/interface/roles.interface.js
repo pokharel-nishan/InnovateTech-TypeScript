@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ERoles = void 0;
-var ERoles;
-(function (ERoles) {
-    ERoles["ADMIN"] = "admin";
-    ERoles["USER"] = "user";
-    ERoles["GUEST"] = "guest";
-})(ERoles || (exports.ERoles = ERoles = {}));
+exports.Roles = void 0;
+var Roles;
+(function (Roles) {
+    Roles["ADMIN"] = "admin";
+    Roles["USER"] = "user";
+    Roles["GUEST"] = "guest";
+})(Roles || (exports.Roles = Roles = {}));
 //# sourceMappingURL=roles.interface.js.map

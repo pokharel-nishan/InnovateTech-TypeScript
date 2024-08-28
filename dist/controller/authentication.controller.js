@@ -18,13 +18,15 @@ const signup_authentication_1 = require("../authentication/signup.authentication
 function logIn(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const credentials = req.body;
-        return res.status(response_interface_1.ESuccessHttpStatusCode.POST).json({ Token: yield (0, login_authentication_1.login)(credentials) });
+        return res
+            .status(response_interface_1.SuccessHttpStatusCode.POST)
+            .json({ Token: yield (0, login_authentication_1.login)(credentials) });
     });
 }
 function signUp(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const user = req.body;
-        return res.status(response_interface_1.ESuccessHttpStatusCode.POST).json(yield (0, signup_authentication_1.signup)(user));
+        return res.status(response_interface_1.SuccessHttpStatusCode.POST).json(yield (0, signup_authentication_1.signup)(user));
     });
 }
 function logOut(req, res) { }

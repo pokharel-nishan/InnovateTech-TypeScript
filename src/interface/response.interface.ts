@@ -1,4 +1,4 @@
-export enum ESuccessHttpStatusCode {
+export enum SuccessHttpStatusCode {
   GET = 200,
   PUT = 200,
   PATCH = 200,
@@ -7,7 +7,7 @@ export enum ESuccessHttpStatusCode {
   ACCEPTED = 202,
 }
 
-export enum EClientErrorHttpStatusCode {
+export enum ClientErrorHttpStatusCode {
   BAD_REQUEST = 400,
   UNAUTHORIZED = 401,
   PAYMENT_REQUIRED = 402,
@@ -20,6 +20,6 @@ export enum EClientErrorHttpStatusCode {
   UNPROCESSABLE_CONTENT = 422,
 }
 
-export enum EServerErrorHttpStatusCode {
+export enum ServerErrorHttpStatusCode {
   INTERNAL_SERVER_ERROR = 500,
 }

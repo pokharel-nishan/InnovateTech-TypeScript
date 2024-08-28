@@ -1,4 +1,4 @@
-import { Schema, model, connect } from 'mongoose';
+import { Schema, model, connect } from "mongoose";
 
 interface IUser {
   username: string;
@@ -6,7 +6,7 @@ interface IUser {
   email: string;
   firstname: string;
   lastname: string;
-  role: string
+  role: string;
 }
 
 const UserModel = new Schema<IUser>({

@@ -9,5 +9,5 @@ declare module "express-serve-static-core" {
 
 export interface IModifiedRequest extends Request {
   role?: string;
-  userId?: string
+  userId?: string;
 }

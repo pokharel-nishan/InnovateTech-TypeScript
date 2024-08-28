@@ -2,7 +2,11 @@ import { NextFunction, Request, Response } from "express";
 import * as jwt from "jsonwebtoken";
 import { IModifiedRequest } from "../types/express";
 
-export const auth = (req: IModifiedRequest, res: Response, next: NextFunction) => {
+export const auth = (
+  req: IModifiedRequest,
+  res: Response,
+  next: NextFunction,
+) => {
   const authorization = req.headers.authorization;
 
   if (!authorization) {

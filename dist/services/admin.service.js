@@ -12,8 +12,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const user_data_access_1 = require("../data-access/user.data-access");
 const handlers_exception_1 = require("../exception/handlers.exception");
 const encryption_util_1 = require("../utils/encryption.util");
-const { v4: uuid } = require("uuid");
-const userService = {
+const adminService = {
+    getUsers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const users = yield (0, user_data_access_1.getAllUsers)();
+            if (Object.keys(users).length === 0) {
+                throw new handlers_exception_1.ResourceNotFound("No existing users in the system.");
+            }
+            return users;
+        });
+    },
     getParticularUser(userId) {
         return __awaiter(this, void 0, void 0, function* () {
             const user = yield (0, user_data_access_1.findParticularUser)(userId);
@@ -87,5 +95,5 @@ const userService = {
         });
     },
 };
-exports.default = userService;
-//# sourceMappingURL=user.service.js.map
+exports.default = adminService;
+//# sourceMappingURL=admin.service.js.map

@@ -8,15 +8,18 @@ import {
 import { createUserDto } from "../dto/createUser.dto";
 import { fullUpdateDto } from "../dto/fullUpdate.dto";
 import { partialUpdateDto } from "../dto/partialUpdate.dto";
-import {
-  BadRequest,
-  HttpError,
-  ResourceNotFound,
-} from "../exception/handlers.exception";
+import { HttpError, ResourceNotFound } from "../exception/handlers.exception";
 import { encrypt } from "../utils/encryption.util";
-const { v4: uuid } = require("uuid");
 
-const userService = {
+const adminService = {
+  async getUsers() {
+    const users = await getAllUsers();
+    if (Object.keys(users).length === 0) {
+      throw new ResourceNotFound("No existing users in the system.");
+    }
+    return users;
+  },
+
   async getParticularUser(userId: string) {
     const user = await findParticularUser(userId);
     if (user) {
@@ -90,4 +93,4 @@ const userService = {
     return user;
   },
 };
-export default userService;
+export default adminService;
