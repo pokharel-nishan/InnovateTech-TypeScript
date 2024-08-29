@@ -31,6 +31,7 @@ export const auth = (
 
   const role: string = verifiedData.role;
   const userId: string = verifiedData.userId;
+  console.log(role)
   req.role = role;
   req.userId = userId;
   next();

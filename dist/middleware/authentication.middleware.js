@@ -47,6 +47,7 @@ const auth = (req, res, next) => {
     }
     const role = verifiedData.role;
     const userId = verifiedData.userId;
+    console.log(role);
     req.role = role;
     req.userId = userId;
     next();
